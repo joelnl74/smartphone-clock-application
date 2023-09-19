@@ -1,5 +1,5 @@
+using MobileClock.Models;
 using MobileClock.View.Interfaces;
-
 
 public class ClockView : BaseView, IClockView
 {

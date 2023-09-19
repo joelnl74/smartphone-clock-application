@@ -1,16 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class ClockModel
+namespace MobileClock.Models
 {
-    public long TimeStamp { get; private set; }
-
-    public ClockModel(long timeStamp)
+    public class ClockModel : IEquatable<ClockModel>
     {
-        TimeStamp = timeStamp;
-    }
+        public long TimeStamp { get; private set; }
 
-    public void SetTimer(long timeStamp)
-        => this.TimeStamp = timeStamp;
+        public ClockModel(long timeStamp)
+            => TimeStamp = timeStamp;
+
+        public bool Equals(ClockModel other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return TimeStamp == other.TimeStamp;
+        }
+    }
 }

@@ -1,4 +1,5 @@
 using Core.Interfaces;
+using MobileClock.Models;
 
 namespace MobileClock.View.Interfaces
 {

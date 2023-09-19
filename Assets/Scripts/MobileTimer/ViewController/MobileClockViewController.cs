@@ -1,8 +1,12 @@
+using Core.ViewController;
 using MobileClock.Presenter.Interfaces;
 using MobileClock.View.Interfaces;
 
-public class MobileClockViewController : ViewController<IClockPresenter, IClockView, ClockView>
+namespace MobileClock.ViewController
 {
-    private void Start()
-        => _presenter.LoadData();
+    public class MobileClockViewController : ViewController<IClockPresenter, IClockView, ClockView>
+    {
+        private void Start()
+            => _presenter.LoadData();
+    }
 }
