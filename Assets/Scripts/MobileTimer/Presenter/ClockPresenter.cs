@@ -1,3 +1,4 @@
+using MobileClock.Mapper.Interface;
 using MobileClock.Models;
 using MobileClock.Presenter.Interfaces;
 using MobileClock.View.Interfaces;
@@ -8,12 +9,16 @@ namespace MobileClock.Presenter
     public class ClockPresenter : Presenter<IClockView>, IClockPresenter
     {
         private ClockModel _clockModel;
+        private readonly IClockModelMapper _clockModelMapper;
 
-        public ClockPresenter() { }
+        public ClockPresenter(IClockModelMapper clockModelMapper) 
+        {
+            _clockModelMapper = clockModelMapper;
+        }
 
         public void LoadData()
         {
-            _clockModel = new ClockModel(DateTime.Now.Ticks);
+            _clockModel = _clockModelMapper.MapSingle();
 
             _view.DidLoadData(_clockModel);
         }
