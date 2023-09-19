@@ -4,14 +4,20 @@ using MobileClock.Presenter;
 using MobileClock.Presenter.Interfaces;
 using Zenject;
 
-public class MobileTimerMonoInstaller : MonoInstaller
+namespace MobileClock.Installer
 {
-    public override void InstallBindings()
+    public class MobileTimerMonoInstaller : MonoInstaller
     {
-        // Presenters.
-        Container.Bind<IClockPresenter>().To<ClockPresenter>().AsSingle();
+        public override void InstallBindings()
+        {
+            // Presenters.
+            Container.Bind<IClockPresenter>().To<ClockPresenter>().AsSingle();
+            Container.Bind<ITimerPresenter>().To<TimerPresenter>().AsSingle();
+            Container.Bind<IStopWatchPresenter>().To<StopWatchPresenter>().AsSingle();
 
-        // Mappers.
-        Container.Bind<IClockModelMapper>().To<ClockModelMapper>().AsSingle();
+            // Mappers.
+            Container.Bind<IClockModelMapper>().To<ClockModelMapper>().AsSingle();
+            Container.Bind<ITimerModelMapper>().To<TimerModelMapper>().AsSingle();
+        }
     }
 }

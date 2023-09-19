@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Core.ViewController;
+using MobileClock.Presenter.Interfaces;
+using MobileClock.View;
+using MobileClock.View.Interfaces;
 
-public class MobileTimerViewController : MonoBehaviour
+namespace MobileClock.ViewController
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MobileTimerViewController : ViewController<ITimerPresenter, ITimerView, TimerView>
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
+

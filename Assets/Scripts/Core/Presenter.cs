@@ -1,12 +1,16 @@
 using Core.Interfaces;
 
-public class Presenter<TView> : IPresenter<TView>
-        where TView : class, IView
+namespace Core.Presenter
 {
-    protected TView _view;
-
-    public void Bind(TView view)
+    public class Presenter<TView> : IPresenter<TView>
+        where TView : class, IView
     {
-        _view = view;
+        protected TView _view;
+
+        public void Bind(TView view)
+        {
+            _view = view;
+        }
     }
+
 }

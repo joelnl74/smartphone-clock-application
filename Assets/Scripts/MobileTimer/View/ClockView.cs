@@ -1,9 +1,13 @@
+using Core.View;
 using MobileClock.Models;
 using MobileClock.View.Interfaces;
 
-public class ClockView : BaseView, IClockView
+namespace MobileClock.View
 {
-    public void DidLoadData(ClockModel clockModel)
+    public class ClockView : BaseView, IClockView
     {
+        public void DidLoadData(ClockModel clockModel)
+        {
+        }
     }
 }

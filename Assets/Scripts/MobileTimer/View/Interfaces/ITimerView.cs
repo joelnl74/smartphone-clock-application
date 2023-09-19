@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Core.Interfaces;
 
-public class ITimerView : MonoBehaviour
+namespace MobileClock.View.Interfaces
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface ITimerView : IBaseTimerView
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

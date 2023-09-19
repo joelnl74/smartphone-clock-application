@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Core.View;
+using MobileClock.View.Interfaces;
 
-public class StopWatchView : MonoBehaviour
+namespace MobileClock.View
 {
-    // Start is called before the first frame update
-    void Start()
+    public class StopWatchView : BaseTimerView
+        , IStopWatchView
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

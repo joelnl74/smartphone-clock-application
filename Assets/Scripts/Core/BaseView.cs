@@ -1,6 +1,9 @@
 using Core.Interfaces;
 using UnityEngine;
 
-public class BaseView : MonoBehaviour, IView
+namespace Core.View
 {
+    public class BaseView : MonoBehaviour, IView
+    {
+    }
 }
