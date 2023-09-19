@@ -7,5 +7,6 @@ namespace MobileClock.View.Interfaces
     {
         void DidLoadData(TimerModel timerModel);
         void DidReset();
+        void DidStop();
     }
 }

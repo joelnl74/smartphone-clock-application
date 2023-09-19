@@ -5,6 +5,7 @@ namespace MobileClock.Presenter.Interfaces
 {
     public interface ITimerPresenter : IBaseTimerPresenter<ITimerView>
     {
+        void SetTimer(float time);
     }
 }
 

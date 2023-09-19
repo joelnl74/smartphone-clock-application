@@ -1,4 +1,3 @@
-using Core.View;
 using MobileClock.View.Interfaces;
 
 namespace MobileClock.View

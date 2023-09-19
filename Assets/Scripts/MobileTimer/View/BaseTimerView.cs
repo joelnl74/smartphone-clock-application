@@ -2,14 +2,21 @@ using Core.View;
 using MobileClock.Models;
 using MobileClock.View.Interfaces;
 
-public class BaseTimerView : BaseView
-    ,IBaseTimerView
+namespace MobileClock.View
 {
-    public void DidLoadData(TimerModel timerModel)
+    public class BaseTimerView : BaseView
+    , IBaseTimerView
     {
-    }
+        public void DidLoadData(TimerModel timerModel)
+        {
+        }
 
-    public void DidReset()
-    {
+        public void DidReset()
+        {
+        }
+
+        public void DidStop()
+        {
+        }
     }
 }

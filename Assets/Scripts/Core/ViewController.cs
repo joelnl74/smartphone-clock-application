@@ -9,14 +9,14 @@ namespace Core.ViewController
         where TBaseView : TIView
         where TPresenter : IPresenter<TIView>
     {
-        [SerializeField] private TBaseView _baseView;
+        [SerializeField] protected TBaseView baseView;
         protected TPresenter _presenter;
 
         [Inject]
         public void Constructor(TPresenter presenter)
         {
             _presenter = presenter;
-            _presenter.Bind(_baseView);
+            _presenter.Bind(baseView);
         }
     }
 

@@ -11,6 +11,10 @@ namespace MobileClock.Presenter
         public TimerPresenter(ITimerModelMapper timerModelMapper) : base(timerModelMapper)
         {
         }
+
+        public void SetTimer(float time)
+        {
+        }
     }
 }
 

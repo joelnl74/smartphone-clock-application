@@ -8,5 +8,6 @@ namespace MobileClock.Presenter.Interfaces
     {
         void LoadData(float time = 0);
         void Reset();
+        void Stop();
     }
 }

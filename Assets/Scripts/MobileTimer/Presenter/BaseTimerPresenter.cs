@@ -18,5 +18,8 @@ namespace MobileClock.Presenter
 
         public void Reset()
             => LoadData();
+
+        public void Stop()
+            => _view.DidStop();
     }
 }
