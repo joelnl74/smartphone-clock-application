@@ -6,6 +6,6 @@ namespace MobileClock.Mapper
     public class TimerModelMapper : ITimerModelMapper
     {
         public TimerModel MapSingle(float time = 0)
-            => new TimerModel(time);
+            => new TimerModel { Time = time };
     }
 }

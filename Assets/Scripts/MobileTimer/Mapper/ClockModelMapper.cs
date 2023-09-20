@@ -7,6 +7,6 @@ namespace MobileClock.Mapper
     public class ClockModelMapper : IClockModelMapper
     {
         public ClockModel MapSingle()
-            => new ClockModel(DateTime.Now.Ticks);
+            => new ClockModel { TimeStamp = DateTime.Now.Ticks };
     }
 }
