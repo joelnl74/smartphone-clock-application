@@ -4,10 +4,7 @@ namespace MobileClock.Models
 {
     public class ClockModel : IEquatable<ClockModel>
     {
-        public long TimeStamp { get; private set; }
-
-        public ClockModel(long timeStamp)
-            => TimeStamp = timeStamp;
+        public long TimeStamp;
 
         public bool Equals(ClockModel other)
         {

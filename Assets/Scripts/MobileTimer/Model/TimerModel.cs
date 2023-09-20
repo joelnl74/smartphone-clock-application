@@ -4,10 +4,7 @@ namespace MobileClock.Models
 {
     public class TimerModel : IEquatable<TimerModel>
     {
-        public float Time { get; private set; }
-
-        public TimerModel(float time)
-            => Time = time;
+        public float Time;
 
         public bool Equals(TimerModel other)
         {
