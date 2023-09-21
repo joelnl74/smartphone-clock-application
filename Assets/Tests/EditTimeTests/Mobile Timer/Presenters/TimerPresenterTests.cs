@@ -18,9 +18,8 @@ namespace Tests.MobileTimer.Presenters
             // Arrange.
             var mapper = Substitute.For<ITimerModelMapper>();
             var view = Substitute.For<ITimerView>();
-            var signalBus = Substitute.For<SignalBus>();
 
-            var sut = new TimerPresenter(mapper, signalBus);
+            var sut = new TimerPresenter(mapper, null);
 
             sut.Bind(view);
 
@@ -37,9 +36,8 @@ namespace Tests.MobileTimer.Presenters
             // Arrange.
             var mapper = Substitute.For<ITimerModelMapper>();
             var view = Substitute.For<ITimerView>();
-            var signalBus = Substitute.For<SignalBus>();
 
-            var sut = new TimerPresenter(mapper, signalBus);
+            var sut = new TimerPresenter(mapper, null);
 
             mapper.MapSingle().Returns(new TimerModel { timeSpan = new System.TimeSpan() });
             sut.Bind(view);
@@ -51,6 +49,27 @@ namespace Tests.MobileTimer.Presenters
 
             // Assert.
             view.Received(1).DidLoadData(Arg.Is<TimerModel>(x => expectedModel.Equals(x)));
+        }
+
+        [Test]
+        public void LoadData_View_MapperInvoked()
+        {
+            // Arrange.
+            var mapper = Substitute.For<ITimerModelMapper>();
+            var view = Substitute.For<ITimerView>();
+
+            var sut = new TimerPresenter(mapper, null);
+
+            mapper.MapSingle().Returns(new TimerModel { timeSpan = new System.TimeSpan() });
+            sut.Bind(view);
+
+            // Act.
+            sut.LoadData();
+
+            var expectedModel = new TimerModel { timeSpan = new System.TimeSpan() };
+
+            // Assert.
+            mapper.Received(1).MapSingle();
         }
     }
 }

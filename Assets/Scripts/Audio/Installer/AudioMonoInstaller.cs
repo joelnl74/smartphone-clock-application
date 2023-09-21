@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Audio
 {
-    public class AudioInstaller : MonoInstaller
+    public class AudioMonoInstaller : MonoInstaller
     {
         [SerializeField] private AudioEventScriptAbleObjectCollection audioEventScriptAbleObjectCollection;
 

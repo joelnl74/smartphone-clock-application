@@ -5,10 +5,7 @@ using MobileClock.View.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Tests.MobileTimer.Presenters
 {
@@ -31,24 +28,24 @@ namespace Tests.MobileTimer.Presenters
             Assert.That(view.ReceivedCalls().Count(), Is.EqualTo(0));
         }
 
-        //[Test]
-        //public void LoadData_View_ReceivedCorrectData()
-        //{
-        //    // Arrange.
-        //    var mapper = Substitute.For<IClockModelMapper>();
-        //    var view = Substitute.For<IClockView>();
-        //    var sut = new ClockPresenter(mapper);
+        [Test]
+        public void LoadData_View_MapperCalled()
+        {
+            // Arrange.
+            var mapper = Substitute.For<IClockModelMapper>();
+            var view = Substitute.For<IClockView>();
+            var sut = new ClockPresenter(mapper);
 
-        //    mapper.MapSingle().Returns(new ClockModel { currentDateTime = DateTime.Now });
-        //    sut.Bind(view);
+            mapper.MapSingle().Returns(new ClockModel { currentDateTime = DateTime.Now });
+            sut.Bind(view);
 
-        //    // Act.
-        //    sut.LoadData();
+            // Act.
+            sut.LoadData();
 
-        //    var expectedModel = new ClockModel { currentDateTime = DateTime.Now };
+            var expectedModel = new ClockModel { currentDateTime = DateTime.Now };
 
-        //    // Assert.
-        //    view.Received(1).DidLoadData(Arg.Is<ClockModel>(x => expectedModel.Equals(x)));
-        //}
+            // Assert.
+            mapper.Received(1).MapSingle();
+        }
     }
 }
