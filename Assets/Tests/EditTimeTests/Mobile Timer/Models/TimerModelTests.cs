@@ -1,13 +1,14 @@
 using MobileClock.Models;
 using NUnit.Framework;
+using System;
 
 namespace Tests.MobileTimer.Models
 {
     [TestFixture]
     public class TimerModelTests
     {
-        private const float _timeStamp = 1;
-        private const float _otherTimeStamp = 2;
+        private const int _timeStamp = 1;
+        private const int _otherTimeStamp = 2;
 
         private class OtherObject
         {
@@ -18,7 +19,7 @@ namespace Tests.MobileTimer.Models
         public void SameInstance_ShouldSucceedEqualityObjectComparer()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
 
             // Assert.
             Assert.AreEqual(data, data);
@@ -29,7 +30,7 @@ namespace Tests.MobileTimer.Models
         public void SameInstance_ShouldSucceedEqualityItemComparer()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
 
             // Assert.
             Assert.AreEqual(data, data);
@@ -40,8 +41,8 @@ namespace Tests.MobileTimer.Models
         public void SameData_ShouldSucceedEquality()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
-            var otherData = new TimerModel { Time = _timeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
+            var otherData = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
 
             // Assert.
             Assert.AreEqual(data, otherData);
@@ -52,7 +53,7 @@ namespace Tests.MobileTimer.Models
         public void DifferentType_ShouldFailEquality()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
             object otherData = new OtherObject();
 
             // Assert.
@@ -64,7 +65,7 @@ namespace Tests.MobileTimer.Models
         public void NullInstance_ShouldFailEqualityObjectComparer()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
             TimerModel otherData = null;
 
             // Assert.
@@ -76,7 +77,7 @@ namespace Tests.MobileTimer.Models
         public void NullInstance_ShouldFailEqualityItemComparer()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
             TimerModel otherData = null;
 
             // Assert.
@@ -88,8 +89,8 @@ namespace Tests.MobileTimer.Models
         public void DifferentId_ShouldFailEquality()
         {
             // Arrange.
-            var data = new TimerModel { Time = _timeStamp };
-            var otherData = new TimerModel { Time = _otherTimeStamp };
+            var data = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _timeStamp) };
+            var otherData = new TimerModel { timeSpan = new System.TimeSpan(0, 0, _otherTimeStamp) };
 
             // Assert.
             Assert.AreNotEqual(data, otherData);

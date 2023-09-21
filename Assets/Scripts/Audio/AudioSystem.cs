@@ -1,4 +1,6 @@
+using Audio.Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace Audio
 {
@@ -7,7 +9,13 @@ namespace Audio
     {
         [SerializeField] private AudioSource _audioSource;
 
-        public void Play(AudioEventScriptAbleObject audioEventScriptAbleObject)
-            => _audioSource.PlayOneShot(audioEventScriptAbleObject.audioClip);
+        private IAudioEventScriptAbleObjectCollection collection;
+
+        [Inject]
+        public void Constructor(IAudioEventScriptAbleObjectCollection audioEventScriptAbleObjectCollection)
+            => collection = audioEventScriptAbleObjectCollection;
+
+        public void Play(PlayAudioSignal playAudio)
+            => _audioSource.PlayOneShot(collection.Get(playAudio.audioType).audioClip);
     }
 }

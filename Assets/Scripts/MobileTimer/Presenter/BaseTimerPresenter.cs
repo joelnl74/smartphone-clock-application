@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands.TubeClient;
 using Core.Presenter;
 using MobileClock.Mapper;
 using MobileClock.Mapper.Interface;
@@ -15,30 +16,27 @@ namespace MobileClock.Presenter
         private CompositeDisposable _disposables = new CompositeDisposable();
 
         public BaseTimerPresenter(ITimerModelMapper timerModelMapper)
-        {
-            _timerModelMapper = timerModelMapper;
-        }
+            => _timerModelMapper = timerModelMapper;
 
         public abstract void UpdateTimer();
 
         public void StartTimer()
         {
+            timerModel.isRunning = true;
             Observable.EveryUpdate().Subscribe(x => UpdateTimer()).AddTo(_disposables);
-        }
 
-        public void LoadData(float time = 0)
+            _view.DidStartTimer();
+        }
+        public void LoadData(int time = 0)
         {
             timerModel = _timerModelMapper.MapSingle(time);
             _view.DidLoadData(timerModel);
         }
 
-        public void Reset()
-            => LoadData();
-
         public void Stop()
         {
             _disposables.Clear();
-            LoadData();
+            _view.DidStop();
         }
     }
 }

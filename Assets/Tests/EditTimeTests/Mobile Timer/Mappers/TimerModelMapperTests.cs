@@ -6,7 +6,7 @@ namespace Tests.MobileTimer.Mappers
 {
     public class TimerModelMapperTests
     {
-        private const float _time = 1;
+        private const int _time = 1;
 
         #region MapSingle
 
@@ -22,7 +22,7 @@ namespace Tests.MobileTimer.Mappers
             // Assert.
             var expected = new TimerModel
             {
-                Time = _time,
+                timeSpan = new System.TimeSpan(0, 0, _time),
             };
 
             Assert.IsTrue(expected.Equals(result));

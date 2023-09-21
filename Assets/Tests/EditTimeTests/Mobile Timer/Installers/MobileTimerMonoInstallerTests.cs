@@ -44,6 +44,7 @@ namespace Tests.MobileTimer.Installer
         {
             //Arange.
             Container.Bind<ITimerModelMapper>().To<TimerModelMapper>().AsSingle();
+            Container.Bind<ITimerLapModelMapper>().To<TimerLapModelMapper>().AsSingle();
             Container.Bind<IStopWatchPresenter>().To<StopWatchPresenter>().AsSingle();
 
             //Act.

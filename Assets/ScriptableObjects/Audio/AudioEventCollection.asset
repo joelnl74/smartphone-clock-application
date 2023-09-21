@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2950e3f6b224b6f4c84df708d05c638e, type: 3}
-  m_Name: TimerCompleteAudio
+  m_Script: {fileID: 11500000, guid: dad12b67bf6b2c143aa64ce069d07375, type: 3}
+  m_Name: AudioEventCollection
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
+  _audioEvents:
+  - {fileID: 11400000, guid: 87e26492b900dad44b4440cc2fa7cb31, type: 2}
