@@ -4,6 +4,7 @@ using MobileClock.Models;
 using MobileClock.Presenter.Interfaces;
 using MobileClock.View.Interfaces;
 using System;
+using UniRx;
 
 namespace MobileClock.Presenter
 {
@@ -12,15 +13,18 @@ namespace MobileClock.Presenter
         private ClockModel _clockModel;
         private readonly IClockModelMapper _clockModelMapper;
 
-        public ClockPresenter(IClockModelMapper clockModelMapper) 
-        {
-            _clockModelMapper = clockModelMapper;
-        }
+        public ClockPresenter(IClockModelMapper clockModelMapper)
+            => _clockModelMapper = clockModelMapper;
 
         public void LoadData()
         {
             _clockModel = _clockModelMapper.MapSingle();
+            Observable.EveryUpdate().Subscribe(x => UpdateClock());
+        }
 
+        private void UpdateClock()
+        {
+            _clockModel.currentDateTime = DateTime.Now;
             _view.DidLoadData(_clockModel);
         }
     }
