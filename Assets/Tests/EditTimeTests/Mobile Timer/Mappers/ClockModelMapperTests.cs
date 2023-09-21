@@ -19,7 +19,7 @@ namespace Tests.MobileTimer.Mappers
             var result = sut.MapSingle();
 
             // Assert.
-            var expected = new ClockModel { TimeStamp = DateTime.Now.Ticks };
+            var expected = new ClockModel { currentDateTime = DateTime.Now };
 
             Assert.IsTrue(expected.Equals(result));
         }

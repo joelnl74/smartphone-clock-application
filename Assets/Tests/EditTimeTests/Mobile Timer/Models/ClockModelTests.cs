@@ -1,13 +1,14 @@
 using MobileClock.Models;
 using NUnit.Framework;
+using System;
 
 namespace Tests.MobileTimer.Models
 {
     [TestFixture]
     public class ClockModelTests
     {
-        private const long _timeStamp = 1;
-        private const long _otherTimeStamp = 2;
+        private DateTime _timeStamp = new DateTime(1);
+        private DateTime _otherTimeStamp = new DateTime(2);
 
         private class OtherObject
         {
@@ -18,7 +19,7 @@ namespace Tests.MobileTimer.Models
         public void SameInstance_ShouldSucceedEqualityObjectComparer()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
 
             // Assert.
             Assert.AreEqual(data, data);
@@ -29,7 +30,7 @@ namespace Tests.MobileTimer.Models
         public void SameInstance_ShouldSucceedEqualityItemComparer()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
 
             // Assert.
             Assert.AreEqual(data, data);
@@ -40,8 +41,8 @@ namespace Tests.MobileTimer.Models
         public void SameData_ShouldSucceedEquality()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
-            var otherData = new ClockModel { TimeStamp = _timeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
+            var otherData = new ClockModel { currentDateTime = _timeStamp };
 
             // Assert.
             Assert.AreEqual(data, otherData);
@@ -52,7 +53,7 @@ namespace Tests.MobileTimer.Models
         public void DifferentType_ShouldFailEquality()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
             object otherData = new OtherObject();
 
             // Assert.
@@ -64,7 +65,7 @@ namespace Tests.MobileTimer.Models
         public void NullInstance_ShouldFailEqualityObjectComparer()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
             ClockModel otherData = null;
 
             // Assert.
@@ -76,7 +77,7 @@ namespace Tests.MobileTimer.Models
         public void NullInstance_ShouldFailEqualityItemComparer()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
             ClockModel otherData = null;
 
             // Assert.
@@ -88,8 +89,8 @@ namespace Tests.MobileTimer.Models
         public void DifferentId_ShouldFailEquality()
         {
             // Arrange.
-            var data = new ClockModel { TimeStamp = _timeStamp };
-            var otherData = new ClockModel { TimeStamp = _otherTimeStamp };
+            var data = new ClockModel { currentDateTime = _timeStamp };
+            var otherData = new ClockModel { currentDateTime = _otherTimeStamp };
 
             // Assert.
             Assert.AreNotEqual(data, otherData);

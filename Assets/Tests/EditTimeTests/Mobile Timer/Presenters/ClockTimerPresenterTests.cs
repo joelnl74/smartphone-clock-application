@@ -36,14 +36,14 @@ namespace Tests.MobileTimer.Presenters
             var mapper = Substitute.For<IClockModelMapper>();
             var view = Substitute.For<IClockView>();
             var sut = new ClockPresenter(mapper);
-            
-            mapper.MapSingle().Returns(new ClockModel { TimeStamp = 0 });
+
+            mapper.MapSingle().Returns(new ClockModel { currentDateTime = new DateTime() });
             sut.Bind(view);
 
             // Act.
             sut.LoadData();
 
-            var expectedModel = new ClockModel { TimeStamp = 0 };
+            var expectedModel = new ClockModel { currentDateTime = new DateTime() };
 
             // Assert.
             view.Received(1).DidLoadData(Arg.Is<ClockModel>(x => expectedModel.Equals(x)));

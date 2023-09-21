@@ -4,13 +4,13 @@ namespace MobileClock.Models
 {
     public class ClockModel : IEquatable<ClockModel>
     {
-        public long TimeStamp;
+        public DateTime currentDateTime;
 
         public bool Equals(ClockModel other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return TimeStamp == other.TimeStamp;
+            return currentDateTime.Ticks == other.currentDateTime.Ticks;
         }
     }
 }
