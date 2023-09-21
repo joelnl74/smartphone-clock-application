@@ -13,7 +13,11 @@ namespace MobileClock.Presenter
         }
 
         public void SetTimer(float time)
+            => LoadData(time);
+
+        public override void UpdateTimer()
         {
+            throw new System.NotImplementedException();
         }
     }
 }
