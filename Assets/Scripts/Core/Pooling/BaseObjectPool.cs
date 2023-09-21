@@ -28,8 +28,9 @@ namespace Core.Pooling
             for (int i = 0; i < amount; i++)
             {
                 var item = pool.Get();
-                pool.Release(item);
             }
+
+            ReleaseAll();
         }
 
         /// <summary>
