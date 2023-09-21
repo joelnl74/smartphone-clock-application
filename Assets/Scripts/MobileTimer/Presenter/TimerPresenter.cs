@@ -42,24 +42,28 @@ namespace MobileClock.Presenter
         
         public override void UpdateTimer()
         {
-            var ms = 1000 * Time.deltaTime;
+            var ms = millisecondsInSecond * Time.deltaTime;
 
             timerModel.timeSpan = timerModel.timeSpan.Subtract(new TimeSpan(0, 0, 0, 0, (int)ms));
 
             if (timerModel.timeSpan.Seconds <= 0)
             {
-                // TODO Completion signal so we can play some audio.
-                Stop();
-                Reset();
-
-                _signalBus.Fire(new PlayAudioSignal { audioType = Audio.AudioType.Alarm }); 
-                _view.DidReset();
-                LoadData();
+                HandleTimerFinished();
                 
                 return;
             }
             
             _view.DidLoadData(timerModel);
+        }
+
+        private void HandleTimerFinished()
+        {
+            Stop();
+            Reset();
+
+            _signalBus.Fire(new PlayAudioSignal { audioType = Audio.AudioType.Alarm });
+            _view.DidReset();
+            LoadData();
         }
     }
 }

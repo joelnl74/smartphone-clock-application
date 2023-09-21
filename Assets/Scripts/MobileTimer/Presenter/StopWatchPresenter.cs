@@ -36,7 +36,7 @@ namespace MobileClock.Presenter
 
         public override void UpdateTimer()
         {
-            var ms = 1000 * Time.deltaTime;
+            var ms = millisecondsInSecond * Time.deltaTime;
             
             timerModel.timeSpan = timerModel.timeSpan.Add(new TimeSpan(0, 0, 0, 0, (int)ms));
             _view.DidLoadData(timerModel);

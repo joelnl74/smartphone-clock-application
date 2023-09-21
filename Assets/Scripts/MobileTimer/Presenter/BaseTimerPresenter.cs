@@ -10,6 +10,7 @@ namespace MobileClock.Presenter
 {
     public abstract class BaseTimerPresenter<TView> : Presenter<TView> where TView : class, IBaseTimerView
     {
+        protected const int millisecondsInSecond = 1000;
         protected TimerModel timerModel;
 
         private readonly ITimerModelMapper _timerModelMapper;
