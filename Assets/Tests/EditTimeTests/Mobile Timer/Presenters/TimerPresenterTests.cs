@@ -4,7 +4,9 @@ using MobileClock.Presenter;
 using MobileClock.View.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
+using Zenject;
 
 namespace Tests.MobileTimer.Presenters
 {
@@ -15,8 +17,9 @@ namespace Tests.MobileTimer.Presenters
         {
             // Arrange.
             var mapper = Substitute.For<ITimerModelMapper>();
-            var view = Substitute.For<IStopWatchView>();
-            var sut = new StopWatchPresenter(mapper);
+            var view = Substitute.For<ITimerView>();
+
+            var sut = new TimerPresenter(mapper, null);
 
             sut.Bind(view);
 
@@ -32,19 +35,41 @@ namespace Tests.MobileTimer.Presenters
         {
             // Arrange.
             var mapper = Substitute.For<ITimerModelMapper>();
-            var view = Substitute.For<IStopWatchView>();
-            var sut = new StopWatchPresenter(mapper);
+            var view = Substitute.For<ITimerView>();
 
-            mapper.MapSingle().Returns(new TimerModel { Time = 0 });
+            var sut = new TimerPresenter(mapper, null);
+
+            mapper.MapSingle().Returns(new TimerModel { timeSpan = new System.TimeSpan() });
             sut.Bind(view);
 
             // Act.
             sut.LoadData();
 
-            var expectedModel = new TimerModel { Time = 0 };
+            var expectedModel = new TimerModel { timeSpan = new System.TimeSpan() };
 
             // Assert.
             view.Received(1).DidLoadData(Arg.Is<TimerModel>(x => expectedModel.Equals(x)));
+        }
+
+        [Test]
+        public void LoadData_View_MapperInvoked()
+        {
+            // Arrange.
+            var mapper = Substitute.For<ITimerModelMapper>();
+            var view = Substitute.For<ITimerView>();
+
+            var sut = new TimerPresenter(mapper, null);
+
+            mapper.MapSingle().Returns(new TimerModel { timeSpan = new System.TimeSpan() });
+            sut.Bind(view);
+
+            // Act.
+            sut.LoadData();
+
+            var expectedModel = new TimerModel { timeSpan = new System.TimeSpan() };
+
+            // Assert.
+            mapper.Received(1).MapSingle();
         }
     }
 }

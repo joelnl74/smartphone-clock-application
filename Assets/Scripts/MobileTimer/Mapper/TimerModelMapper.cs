@@ -5,7 +5,7 @@ namespace MobileClock.Mapper
 {
     public class TimerModelMapper : ITimerModelMapper
     {
-        public TimerModel MapSingle(float time = 0)
-            => new TimerModel { Time = time };
+        public TimerModel MapSingle(int time = 0)
+            => new TimerModel { timeSpan = new System.TimeSpan(0, 0, time) };
     }
 }

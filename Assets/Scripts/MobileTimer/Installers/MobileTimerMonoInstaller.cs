@@ -10,6 +10,9 @@ namespace MobileClock.Installer
     {
         public override void InstallBindings()
         {
+            // Signal bus.
+            SignalBusInstaller.Install(Container);
+
             // Presenters.
             Container.Bind<IClockPresenter>().To<ClockPresenter>().AsSingle();
             Container.Bind<ITimerPresenter>().To<TimerPresenter>().AsSingle();
@@ -18,6 +21,7 @@ namespace MobileClock.Installer
             // Mappers.
             Container.Bind<IClockModelMapper>().To<ClockModelMapper>().AsSingle();
             Container.Bind<ITimerModelMapper>().To<TimerModelMapper>().AsSingle();
+            Container.Bind<ITimerLapModelMapper>().To<TimerLapModelMapper>().AsSingle();
         }
     }
 }

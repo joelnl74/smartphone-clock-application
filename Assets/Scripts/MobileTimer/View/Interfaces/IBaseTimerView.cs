@@ -6,7 +6,7 @@ namespace MobileClock.View.Interfaces
     public interface IBaseTimerView : IView
     {
         void DidLoadData(TimerModel timerModel);
-        void DidReset();
         void DidStop();
+        void DidStartTimer();
     }
 }

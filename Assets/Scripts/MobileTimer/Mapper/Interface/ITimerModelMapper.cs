@@ -4,6 +4,6 @@ namespace MobileClock.Mapper.Interface
 {
     public interface ITimerModelMapper
     {
-        TimerModel MapSingle(float time = 0);
+        TimerModel MapSingle(int time = 0);
     }
 }

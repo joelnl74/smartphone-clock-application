@@ -1,4 +1,3 @@
-using MobileClock.Installer;
 using MobileClock.Mapper;
 using MobileClock.Mapper.Interface;
 using MobileClock.Presenter;
@@ -15,6 +14,7 @@ namespace Tests.MobileTimer.Installer
         public void Bindings_ShouldContainTimerPresenter()
         {
             //Arange.
+            SignalBusInstaller.Install(Container);
             Container.Bind<ITimerModelMapper>().To<TimerModelMapper>().AsSingle();
             Container.Bind<ITimerPresenter>().To<TimerPresenter>().AsSingle();
 
@@ -44,6 +44,7 @@ namespace Tests.MobileTimer.Installer
         {
             //Arange.
             Container.Bind<ITimerModelMapper>().To<TimerModelMapper>().AsSingle();
+            Container.Bind<ITimerLapModelMapper>().To<TimerLapModelMapper>().AsSingle();
             Container.Bind<IStopWatchPresenter>().To<StopWatchPresenter>().AsSingle();
 
             //Act.
@@ -51,6 +52,45 @@ namespace Tests.MobileTimer.Installer
 
             //Assert.
             Assert.NotNull(stopWatchPresenter);
+        }
+
+        [Test]
+        public void Bindings_ShouldContainLapModelMapper()
+        {
+            //Arange.
+            Container.Bind<ITimerLapModelMapper>().To<TimerLapModelMapper>().AsSingle();
+
+            //Act.
+            var timerLapModelMapper = Container.Resolve<ITimerLapModelMapper>();
+
+            //Assert.
+            Assert.NotNull(timerLapModelMapper);
+        }
+
+        [Test]
+        public void Bindings_ShouldContainTimeModelMapper()
+        {
+            //Arange.
+            Container.Bind<ITimerModelMapper>().To<TimerModelMapper>().AsSingle();
+
+            //Act.
+            var timerModelMapper = Container.Resolve<ITimerModelMapper>();
+
+            //Assert.
+            Assert.NotNull(timerModelMapper);
+        }
+
+        [Test]
+        public void Bindings_ShouldContainClockModelMapper()
+        {
+            //Arange.
+            Container.Bind<IClockModelMapper>().To<ClockModelMapper>().AsSingle();
+
+            //Act.
+            var clockModelMapper = Container.Resolve<IClockModelMapper>();
+
+            //Assert.
+            Assert.NotNull(clockModelMapper);
         }
     }
 }
