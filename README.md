@@ -47,4 +47,6 @@ Smartphone clock application
 ### Must
 - Motion sickness has to be taken into account when developing VR devices
 - Ease of use implementation for interaction with the UI and the interaction devices presenter for the VR device.
+- Interaction methods for UI
+- Setting up the UI so that it can be used for all platforms (mobile, vr, pc)
 ### Nice
