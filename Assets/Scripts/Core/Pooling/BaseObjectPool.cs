@@ -41,9 +41,27 @@ namespace Core.Pooling
             for (var i = 0; i < _allInstances.Count; i++)
             {
                 var item = _allInstances[i];
-                pool.Release(item);
+
+                if (item.gameObject.activeSelf)
+                {
+                    Release(item);
+                }
             }
         }
+
+        /// <summary>
+        /// Get instance from object pool.
+        /// </summary>
+        /// <returns></returns>
+        public T Get()
+            => pool.Get();
+
+        /// <summary>
+        /// Release instance from object pool.
+        /// </summary>
+        /// <param name="releaseObject"></param>
+        public void Release(T releaseObject)
+            => pool.Release(releaseObject);
 
         private T OnCreate()
         {
@@ -56,13 +74,9 @@ namespace Core.Pooling
         }
 
         private void OnGet(T model)
-        {
-            model.gameObject.SetActive(true);
-        }
+            => model.gameObject.SetActive(true);
 
         private void OnRelease(T model)
-        {
-            model.gameObject.SetActive(false);
-        }
+            => model.gameObject.SetActive(false);
     }
 }

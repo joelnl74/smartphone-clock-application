@@ -21,7 +21,7 @@ namespace MobileTimer.View
 
         public void Add(TimerLapModel timerLapModel)
         { 
-            var cell = _objectPool.pool.Get();
+            var cell = _objectPool.Get();
             cell.Configure(timerLapModel);
         }
 

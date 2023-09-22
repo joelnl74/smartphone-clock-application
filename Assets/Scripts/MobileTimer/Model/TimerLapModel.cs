@@ -7,8 +7,6 @@ namespace MobileClock.Models
         public TimeSpan lapTimeSpan;
         public TimeSpan globalTimeSpan;
 
-        public bool isRunning;
-
         public bool Equals(TimerLapModel other)
         {
             if (ReferenceEquals(null, other)) return false;

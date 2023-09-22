@@ -14,8 +14,17 @@ namespace MobileClock.Presenter
         private readonly SignalBus _signalBus;
 
         public TimerPresenter(ITimerModelMapper timerModelMapper, SignalBus signalBus) : base(timerModelMapper)
+            => _signalBus = signalBus;
+
+
+        public override void StartTimer()
         {
-            _signalBus = signalBus;
+            if (timerModel.timeSpan.TotalSeconds <= 0)
+            {
+                return;
+            }
+
+            base.StartTimer();
         }
 
         public void IncreaseTimer(int time)
@@ -25,8 +34,8 @@ namespace MobileClock.Presenter
         }
 
         public void DecreaseTimer(int time)
-        {
-            if (timerModel.timeSpan.Seconds - time < 0)
+        {            
+            if (timerModel.timeSpan.TotalSeconds - time < 0)
             {
                 return;
             }
@@ -37,7 +46,10 @@ namespace MobileClock.Presenter
 
         public void Reset()
         {
+            Stop();
             LoadData();
+
+            _view.DidReset();
         }
         
         public override void UpdateTimer()
@@ -58,12 +70,9 @@ namespace MobileClock.Presenter
 
         private void HandleTimerFinished()
         {
-            Stop();
             Reset();
 
             _signalBus.Fire(new PlayAudioSignal { audioType = Audio.AudioType.Alarm });
-            _view.DidReset();
-            LoadData();
         }
     }
 }

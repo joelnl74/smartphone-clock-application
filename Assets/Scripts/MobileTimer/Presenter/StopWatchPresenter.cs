@@ -15,10 +15,11 @@ namespace MobileClock.Presenter
         private List<TimerLapModel> _timerLapModels = new List<TimerLapModel>();
 
         public StopWatchPresenter(ITimerModelMapper timerModelMapper, ITimerLapModelMapper timerLapModelMapper) : base(timerModelMapper)
-        {
-            _mapper = timerLapModelMapper;
-        }
+            => _mapper = timerLapModelMapper;
 
+        /// <summary>
+        /// Set the lap time.
+        /// </summary>
         public void SetLapTime()
         {
             var model = _mapper.MapSingle(timerModel, _timerLapModels);
@@ -26,6 +27,9 @@ namespace MobileClock.Presenter
             _view.DidUpdateLapTime(model);
         }
 
+        /// <summary>
+        /// Reset the stopwatch.
+        /// </summary>
         public void Reset()
         {
             _timerLapModels.Clear();
@@ -34,6 +38,9 @@ namespace MobileClock.Presenter
             _view.DidReset();
         }
 
+        /// <summary>
+        /// Update timer.
+        /// </summary>
         public override void UpdateTimer()
         {
             var ms = millisecondsInSecond * Time.deltaTime;

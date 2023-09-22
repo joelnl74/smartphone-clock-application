@@ -1,8 +1,13 @@
+using Audio;
 using MobileClock.Mapper;
 using MobileClock.Mapper.Interface;
 using MobileClock.Presenter;
 using MobileClock.Presenter.Interfaces;
+using MobileClock.View.Interfaces;
+using NSubstitute;
 using NUnit.Framework;
+using UnityEngine.TestTools;
+using UnityEngine;
 using Zenject;
 
 namespace Tests.MobileTimer.Installer
