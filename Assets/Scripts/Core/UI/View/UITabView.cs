@@ -18,7 +18,7 @@ namespace Core.UI.View
         [SerializeField] private float _scrollAnimationDuration = 0.25f;
 
         public void DidChangePage(int from, int to)
-            => ChangePageAnimation(from, to).ToObservable();
+            => ChangePageAnimation(from, to).ToObservable().Subscribe();
 
         private IEnumerator ChangePageAnimation(int from, int to)
         {
