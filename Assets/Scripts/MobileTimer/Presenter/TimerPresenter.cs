@@ -16,7 +16,9 @@ namespace MobileClock.Presenter
         public TimerPresenter(ITimerModelMapper timerModelMapper, SignalBus signalBus) : base(timerModelMapper)
             => _signalBus = signalBus;
 
-
+        /// <summary>
+        /// Start timer.
+        /// </summary>
         public override void StartTimer()
         {
             if (timerModel.timeSpan.TotalSeconds <= 0)
@@ -27,12 +29,20 @@ namespace MobileClock.Presenter
             base.StartTimer();
         }
 
+        /// <summary>
+        /// Increase timer.
+        /// </summary>
+        /// <param name="time">Time in seconds to increase.</param>
         public void IncreaseTimer(int time)
         {
             timerModel.timeSpan = timerModel.timeSpan.Add(new TimeSpan(0, 0, time));
             _view.DidLoadData(timerModel);
         }
 
+        /// <summary>
+        /// Decrease timer.
+        /// </summary>
+        /// <param name="time">Time in seconds to decrease.</param>
         public void DecreaseTimer(int time)
         {            
             if (timerModel.timeSpan.TotalSeconds - time < 0)
@@ -44,6 +54,9 @@ namespace MobileClock.Presenter
             _view.DidLoadData(timerModel);
         }
 
+        /// <summary>
+        /// Reset the timers.
+        /// </summary>
         public void Reset()
         {
             Stop();
@@ -52,6 +65,9 @@ namespace MobileClock.Presenter
             _view.DidReset();
         }
         
+        /// <summary>
+        /// Update the timer.
+        /// </summary>
         public override void UpdateTimer()
         {
             var ms = millisecondsInSecond * Time.deltaTime;

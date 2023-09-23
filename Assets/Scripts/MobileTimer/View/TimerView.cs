@@ -34,15 +34,24 @@ namespace MobileClock.View
         private void Start()
             => SetDefaultState();
 
+        /// <summary>
+        /// Called when time is set from presenter.
+        /// </summary>
         public void DidSetTimer(TimerModel timerModel)
             => DidLoadData(timerModel);
 
+        /// <summary>
+        /// Called when timer is reset from presenter.
+        /// </summary>
         public void DidReset()
         {
             state = TimerViewState.Start;
             SetDefaultState();
         }
 
+        /// <summary>
+        /// Called when timer is started from presenter.
+        /// </summary>
         public override void DidStartTimer()
         {
             base.DidStartTimer();
@@ -51,6 +60,9 @@ namespace MobileClock.View
             SetRunningState();
         }
 
+        /// <summary>
+        /// Called when timer is stopped from presenter.
+        /// </summary>
         public override void DidStop()
         {
             base.DidStop();

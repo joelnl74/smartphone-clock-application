@@ -6,7 +6,7 @@ using NSubstitute;
 using NUnit.Framework;
 using System.Linq;
 
-namespace Tests
+namespace Tests.MobileTimer.Presenters
 {
     public interface IMockBaseTimerView : IBaseTimerView { }
     public class MockBaseTimerPresenter : BaseTimerPresenter<IMockBaseTimerView>

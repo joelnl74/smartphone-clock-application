@@ -6,10 +6,11 @@ using System.Linq;
 
 namespace Tests.Core.UI
 {
+    [TestFixture]
     public class MainUIPresenterTests
     {
         [Test]
-        public void View_DidLoadData_NotInvoked()
+        public void View_NotInvoked()
         {
             // Arrange.
             var view = Substitute.For<IUITabview>();

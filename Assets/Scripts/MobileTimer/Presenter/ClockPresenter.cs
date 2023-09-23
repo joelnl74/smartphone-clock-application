@@ -16,12 +16,18 @@ namespace MobileClock.Presenter
         public ClockPresenter(IClockModelMapper clockModelMapper)
             => _clockModelMapper = clockModelMapper;
 
+        /// <summary>
+        /// Load data and start the clock.
+        /// </summary>
         public void LoadData()
         {
             _clockModel = _clockModelMapper.MapSingle();
             Observable.EveryUpdate().Subscribe(x => UpdateClock());
         }
 
+        /// <summary>
+        /// Update timer with current date time.
+        /// </summary>
         private void UpdateClock()
         {
             _clockModel.currentDateTime = DateTime.Now;

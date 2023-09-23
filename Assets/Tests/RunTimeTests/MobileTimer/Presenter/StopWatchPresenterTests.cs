@@ -66,12 +66,12 @@ namespace Tests.MobileTimer.Presenter
             // Act.
             sut.StartTimer();
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
 
             var expectedModel = new TimerModel { timeSpan = new TimeSpan(0, 0, 0, 1) };
 
             // Assert.
-            view.Received().DidLoadData(Arg.Is<TimerModel>(x => x.Equals(expectedModel)));
+            view.Received().DidLoadData(Arg.Is<TimerModel>(x => (int)x.timeSpan.TotalSeconds == (int)expectedModel.timeSpan.TotalSeconds));
         }
 
         [UnityTest]

@@ -10,12 +10,19 @@ namespace Core.UI.Presenter
     {
         private int _currentIndex = 0;
         
+        /// <summary>
+        /// Switch page and play animation.
+        /// </summary>
+        /// <param name="index">Page you wish to navigate to.</param>
         public void ChangePage(int index)
         {
             _view.DidChangePage(_currentIndex, index);
             _currentIndex = index;
         }
 
+        /// <summary>
+        /// Close the application.
+        /// </summary>
         public void CloseApplication()
             => Application.Quit();
     }

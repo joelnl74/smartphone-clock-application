@@ -12,6 +12,10 @@ namespace MobileClock.View
         [SerializeField] private string formatString;
         [SerializeField] private TextMeshProUGUI _timerText;
 
+        /// <summary>
+        /// Setup initial visuals for timers.
+        /// </summary>
+        /// <param name="timerModel"></param>
         public void DidLoadData(TimerModel timerModel)
             => _timerText.text = timerModel.timeSpan.ToString(formatString);
 

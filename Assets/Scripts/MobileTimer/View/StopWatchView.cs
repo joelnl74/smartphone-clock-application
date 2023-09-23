@@ -26,21 +26,33 @@ namespace MobileClock.View
         private void Start()
             => SetDefaultState();
 
+        /// <summary>
+        /// Called when lap time is addded from presenter.
+        /// </summary>
         public void DidUpdateLapTime(TimerLapModel model)
             => _stopWatchLapView.Add(model);
 
+        /// <summary>
+        /// Called when timer is started from presenter.
+        /// </summary>
         public override void DidStartTimer()
         {
             state = StopWatchState.Running;
             SetActiveState();
         }
 
+        /// <summary>
+        /// Called when timer is stopped from presenter.
+        /// </summary>
         public override void DidStop()
         {
             state = StopWatchState.Stop;
             SetPauseState();
         }
 
+        /// <summary>
+        /// Called when timer is reset from presenter.
+        /// </summary>
         public void DidReset()
         {
             state = StopWatchState.Start;
