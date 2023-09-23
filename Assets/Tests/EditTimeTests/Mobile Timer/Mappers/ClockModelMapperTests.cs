@@ -2,6 +2,7 @@ using MobileClock.Mapper;
 using MobileClock.Models;
 using NUnit.Framework;
 using System;
+using UnityEngine;
 
 namespace Tests.MobileTimer.Mappers
 {
@@ -20,8 +21,10 @@ namespace Tests.MobileTimer.Mappers
 
             // Assert.
             var expected = new ClockModel { currentDateTime = DateTime.Now };
+            // Ticks can always be slightly different.
+            var expectedResult = expected.currentDateTime.Ticks / 1000;
 
-            Assert.IsTrue(expected.Equals(result));
+            Assert.IsTrue(Mathf.Approximately(result.currentDateTime.Ticks / 1000.0f, expectedResult));
         }
 
         #endregion

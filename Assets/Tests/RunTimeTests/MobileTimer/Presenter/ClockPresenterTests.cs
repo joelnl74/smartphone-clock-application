@@ -44,9 +44,11 @@ namespace Tests.MobileTimer.Presenter
             yield return new WaitForSeconds(1);
 
             var expectedData = new ClockModel { currentDateTime = DateTime.Now };
+            // Ticks can always be slightly different.
+            var expectedResult = expectedData.currentDateTime.Ticks / 1000;
 
             // Assert.
-            view.Received().DidLoadData(Arg.Is<ClockModel>(x => x.Equals(expectedData)));
+            view.Received().DidLoadData(Arg.Is<ClockModel>(x => Mathf.Approximately(x.currentDateTime.Ticks / 1000.0f, expectedResult)));
         }
     }
 }
