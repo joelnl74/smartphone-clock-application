@@ -47,7 +47,7 @@ Documentation for the architecture used for this smartphone clock application.
 - MobileClockViewController - ClockPresenter - ClockView - ClockModel
 - MobileStopWatchViewController - StopWatchPresenter - StopWatchView - TimerModel/TimerLapModel
 - MobileTimerViewController - TimerPresenter - TimerView - TimerModel
-- Installers (Zenject dependencies binding) AudioMonoInstaller, MobileTimerMonoInstaller, MainMonoInstallerTests
+- Installers (Zenject dependencies binding) AudioMonoInstaller, MobileTimerMonoInstaller, MainMonoInstaller
 ### Base classes
 - Every presenter inherits from the class Presenter which contains a method to bind a generic view
 - Every view controller inherits from the view controller which makes sure contract interfaces are respected and can bind the view to the presenters (the view has no information about the presenter)
@@ -69,7 +69,7 @@ Documentation for the architecture used for this smartphone clock application.
 - Audio folder containing audio files
 - Scriptable objects used as settings for different elements in the game for example button styles and audio definitions
 - Scenes
-- Resources
+- Scriptable objects (audio, styling)
 
 ## Tested
 - Made use of play mode and edit mode unit testing using the Arrange Act Assert pattern
@@ -78,7 +78,7 @@ Documentation for the architecture used for this smartphone clock application.
 - Windows pc
 - Macbook M1 generation
 Edit time test results
-  ![EditTimeTests](https://github.com/joelnl74/smartphone-clock-application/assets/9337898/c2e7bf4a-ba93-4f00-b697-1e5e73258f9e)
+![EditTimeTests](https://github.com/joelnl74/smartphone-clock-application/assets/9337898/c2e7bf4a-ba93-4f00-b697-1e5e73258f9e)
 Run time test results
 ![RunTimeTests](https://github.com/joelnl74/smartphone-clock-application/assets/9337898/34a12de1-ffc6-4e08-91dd-8f74ce1a5e56)
 ## iOS/iPad devices. Do you have any concerns about UI?
