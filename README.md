@@ -18,9 +18,9 @@ Documentation for the architecture used for this smartphone clock application.
 - Zenject
 - UniRX
 - NSubstitute
-- Nunit
+- NUnit
 
-## Projects
+## Assembly definitions
 - Project main application
 - Edit tests edit time tests
 - play tests play mode tests
@@ -35,7 +35,7 @@ Documentation for the architecture used for this smartphone clock application.
 - Button styling
 
 ## Architecture
-- MVVP architecture using dependency injection
+- MVVP architecture using dependency injection and uniRX
 - Model -> contains the data shown to the user
 - View controller -> Entry point for every page in the application and handles the events used in the view level
 - View -> visual representation of the data provided by the presenter
@@ -53,10 +53,14 @@ Documentation for the architecture used for this smartphone clock application.
 - Every view controller inherits from the view controller which makes sure contract interfaces are respected and can bind the view to the presenters (the view has no information about the presenter)
 - Every view inherits from base view 
 
+### Mentions
+- Button style definitions to style different buttons on the fly.
+- Object pooling 
+
 ### Performance
 - The lap view makes use of object pooling so we can reuse the created game objects after a reset
 
-### Main folder structure
+## Main folder structure
 - script/test: Core folders contain generic implementations like object pooling, base view, main navigation, base presenter, base view controller
 - script/test: MobileClock contains the specific implementation for the different pages: clock, timer. stopwatch
 - script/test: Audio is the audio system used
@@ -78,7 +82,7 @@ Edit time test results
 Run time test results
 ![RunTimeTests](https://github.com/joelnl74/smartphone-clock-application/assets/9337898/34a12de1-ffc6-4e08-91dd-8f74ce1a5e56)
 ## iOS/iPad devices. Do you have any concerns about UI?
-- Depending on the requirements landscape vs. portrait mode UI design and implementation need to be taken into account.
+- Depending on the requirements landscape vs. portrait mode UI design and implementation need to be taken into account (for now decide on landscape because it fits most with PC and VR screens).
 - Mobile devices support a vast range of screen resolutions and sizes and can be difficult within Unity to get right, a system to make this more easier or automatically adjustable from code is favorable like a screen wrapper.
 - Some mobile devices have safe areas that have to be taken into account when designing applications or UI.
 ## How would you refactor the code and/or project after release? What would you prioritize as “must happen” versus “nice to have” changes
@@ -86,20 +90,23 @@ Run time test results
 - Requirements for different devices it has to support (landscape/portrait/vs/mobile/pc)
 - Work on more options for interaction with the UI now it mostly consists of buttons but for some devices, it might be more intuitive to also have other options for interactions with the UI.
 - Global navigation structure (navigation controller) Currently all pages are present in the scene but it is more favorable to have one system that can create the pages on startup this would also allow for the creation of different views or settings based on the user's device. The view logic can then be determined based on Zenject injection while the assets can use a unity addressable bundle system for resource and memory management.
-- UX research to make a valid UI design for the end user
+- UX research into (VR/Mobile/Pc) clock applications to make a valid UI design for the end user like full screen vs widget, placement of UI elements and so on.
 - Dynamic safe area handling implementation for mobile devices
 ### Would
 - Creating prefabs for mocking view logic for unit testing so we can also test view logic like button stats and so on.
+- Collection view (infinite scroll view) scroll view that makes use of a set amount of sub-views to the pool. The current object pool only reuses assets on reset in the stopwatch so in theory someone can still infinitely press the lap button and increase memory size.
 ### Nice
 - Styling system based on prefab variants and style bootstrapping (desire to quickly switch between styles) 
 - The audio system is really simple at the moment and could be made more extendable in the near future.
 - The scriptable object collections use linq queries to find specific audio clips or styles for buttons it would be better to map them to a dictionary from o(n) look up to o(1)
 - Make the application more visually appealing with animations and art
-- Texture/sprite atlassing (currently not used but for a bigger project and more art heavy definitely useful)
+- Texture/sprite atlassing (currently not used but for a bigger project and more art-heavy definitely useful)
 - Being able to set multiple alarms
 - Being able to show multiple clocks from around the world(timezones)
+- Being able to visually distinguish in lap times which was the best and which was worse
+- Being able to show the lap number
 ## This application will be used on VR applications. Share your concern and your opinion on what needs to be taken into account to support it in VR.
 - Motion sickness has to be taken into account when developing VR devices
 - Ease of use implementation for interaction with the UI and the interaction devices presenter for the VR device.
-- Interaction methods for UI with vr input devices.
-- Setting up the UI so that it can be used for all platforms (canvas settings world space, event system, vr input system) (mobile, vr, pc)
+- Interaction methods for UI with VR input devices.
+- Setting up the UI so that it can be used for VR platforms (canvas settings world space, event system, VR input systems(gaze, remote controllers, raycasters)
