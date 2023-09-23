@@ -6,12 +6,12 @@ Documentation for the architecture used for this smartphone clock application.
 ![Stopwatch](https://github.com/joelnl74/smartphone-clock-application/assets/9337898/9b39a4bb-715d-497a-aa5e-b54da7f130e5)
 
 ## Schedule
-Reading assignment: ~15 min
-Documentation: ~30 min
-Tests: ~3 hours
-Implementation: ~4 hours
-Testing on multiple devices: ~30min
-Total 8-9 hours
+- Reading assignment: ~15 min
+- Documentation: ~30 min
+- Tests: ~3 hours
+- Implementation: ~4 hours
+- Testing on multiple devices: ~30min
+- Total 8-9 hours
 
 ## Tools
 - Unity 2021.3.4f1
