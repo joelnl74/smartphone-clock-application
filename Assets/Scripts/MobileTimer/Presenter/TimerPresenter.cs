@@ -44,7 +44,7 @@ namespace MobileClock.Presenter
         /// </summary>
         /// <param name="time">Time in seconds to decrease.</param>
         public void DecreaseTimer(int time)
-        {            
+        {
             if (timerModel.timeSpan.TotalSeconds - time < 0)
             {
                 return;
