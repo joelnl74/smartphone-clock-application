@@ -52,7 +52,49 @@ namespace Tests.MobileTimer.Presenters
         }
 
         [Test]
-        public void DidUpdateLapTime_View_ReceivedCorrectData()
+        public void StartTimer_WithModel_View_DidStartTime_Invoked()
+        {
+            // Arrange.
+            var timerModelMapper = Substitute.For<ITimerModelMapper>();
+            var lapTimeModelMapper = Substitute.For<ITimerLapModelMapper>();
+            var view = Substitute.For<IStopWatchView>();
+            var sut = new StopWatchPresenter(timerModelMapper, lapTimeModelMapper);
+
+            timerModelMapper.MapSingle().Returns(new TimerModel { timeSpan = new System.TimeSpan(1) });
+
+            sut.Bind(view);
+            sut.LoadData();
+
+            // Act.
+            sut.StartTimer();
+
+            // Assert.
+            view.Received().DidStartTimer();
+        }
+
+        [Test]
+        public void ResetData_View_ReceivedCorrectData()
+        {
+            // Arrange.
+            var mapper = Substitute.For<ITimerModelMapper>();
+            var lapTimeModelMapper = Substitute.For<ITimerLapModelMapper>();
+            var view = Substitute.For<IStopWatchView>();
+            var sut = new StopWatchPresenter(mapper, lapTimeModelMapper);
+
+            mapper.MapSingle().Returns(new TimerModel { timeSpan = new System.TimeSpan() });
+            sut.Bind(view);
+
+            // Act.
+            sut.Reset();
+
+            var expectedModel = new TimerModel { timeSpan = new System.TimeSpan() };
+
+            // Assert.
+            view.Received(1).DidLoadData(Arg.Is<TimerModel>(x => expectedModel.Equals(x)));
+        }
+
+        [Test]
+        public void UpdateLapTime_View_ReceivedCorrectData()
         {
             // Arrange.
             var timerModelMapper = Substitute.For<ITimerModelMapper>();
@@ -77,7 +119,7 @@ namespace Tests.MobileTimer.Presenters
         }
 
         [Test]
-        public void DidUpdateLapTime_FirsTime_ReturnsGlobalTime()
+        public void UpdateLapTime_FirsTime_ReturnsGlobalTime()
         {
             // Arrange.
             var timerModelMapper = Substitute.For<ITimerModelMapper>();

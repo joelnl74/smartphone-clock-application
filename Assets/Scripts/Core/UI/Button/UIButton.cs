@@ -19,12 +19,20 @@ namespace Core.UI
         [SerializeField] private ButtonStyleDefinitionCollection _buttonStyleDefinitionCollection;
         [SerializeField] private TextMeshProUGUI _text;
         
+        /// <summary>
+        /// Set button style.
+        /// </summary>
+        /// <param name="buttonStyle">The style you wish to assign to the button.</param>
         public void ApplyStle(ButtonStyle buttonStyle)
         {
             var definition = _buttonStyleDefinitionCollection.Get(buttonStyle);
             image.sprite = definition.sprite;
         }
 
+        /// <summary>
+        /// Set button text.
+        /// </summary>
+        /// <param name="text">Text value.</param>
         public void SetText(string text)
             => _text.text = text;
     }

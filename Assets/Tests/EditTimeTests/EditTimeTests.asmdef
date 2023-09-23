@@ -1,6 +1,6 @@
 {
     "name": "EditTimeTests",
-    "rootNamespace": "Tets",
+    "rootNamespace": "Tests",
     "references": [
         "GUID:1c439b2f2f1ddf6428855c6b01f57f7b",
         "GUID:a2f2239355369ba4fb6909aeaa41def5",

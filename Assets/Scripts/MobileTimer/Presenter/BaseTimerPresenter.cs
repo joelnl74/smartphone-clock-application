@@ -1,6 +1,4 @@
-using Codice.Client.BaseCommands.TubeClient;
 using Core.Presenter;
-using MobileClock.Mapper;
 using MobileClock.Mapper.Interface;
 using MobileClock.Models;
 using MobileClock.View.Interfaces;
@@ -21,19 +19,28 @@ namespace MobileClock.Presenter
 
         public abstract void UpdateTimer();
 
-        public void StartTimer()
+        /// <summary>
+        /// Base method to start a timers.
+        /// </summary>
+        public virtual void StartTimer()
         {
-            timerModel.isRunning = true;
             Observable.EveryUpdate().Subscribe(x => UpdateTimer()).AddTo(_disposables);
-
             _view.DidStartTimer();
         }
+        
+        /// <summary>
+        /// Load starting data.
+        /// </summary>
+        /// <param name="time">Time in seconds.</param>
         public void LoadData(int time = 0)
         {
             timerModel = _timerModelMapper.MapSingle(time);
             _view.DidLoadData(timerModel);
         }
 
+        /// <summary>
+        /// Stop the timers.
+        /// </summary>
         public void Stop()
         {
             _disposables.Clear();

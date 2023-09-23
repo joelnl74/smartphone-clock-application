@@ -5,7 +5,6 @@ namespace MobileClock.Models
     public class TimerModel : IEquatable<TimerModel>
     {
         public TimeSpan timeSpan;
-        public bool isRunning;
 
         public bool Equals(TimerModel other)
         {

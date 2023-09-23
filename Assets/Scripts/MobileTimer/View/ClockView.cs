@@ -10,6 +10,10 @@ namespace MobileClock.View
     {
         [SerializeField] private TextMeshProUGUI _localTimeText;
 
+        /// <summary>
+        /// Called when timer is updated.
+        /// </summary>
+        /// <param name="clockModel"></param>
         public void DidLoadData(ClockModel clockModel)
             => _localTimeText.text = clockModel.currentDateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss");
     }
