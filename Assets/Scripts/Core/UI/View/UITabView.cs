@@ -5,12 +5,11 @@ using UnityEngine.UI;
 using UniRx;
 using Core.View;
 using Core.UI.View.Interfaces;
-using System;
 
 namespace Core.UI.View
 {
     public class UITabView : BaseView
-        ,IUITabview
+        , IUITabview
     {
         [field: SerializeField] public List<UIButton> buttons;
         [field: SerializeField] public UIButton closeGameButton;
@@ -19,7 +18,7 @@ namespace Core.UI.View
         [SerializeField] private float _scrollAnimationDuration = 0.25f;
 
         public void DidChangePage(int from, int to)
-            => StartCoroutine(ChangePageAnimation(from, to).ToYieldInstruction());
+            => ChangePageAnimation(from, to).ToObservable();
 
         private IEnumerator ChangePageAnimation(int from, int to)
         {
