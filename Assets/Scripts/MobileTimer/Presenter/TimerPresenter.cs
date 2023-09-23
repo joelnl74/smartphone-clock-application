@@ -88,7 +88,7 @@ namespace MobileClock.Presenter
         {
             Reset();
 
-            _signalBus.Fire(new PlayAudioSignal { audioType = Audio.AudioType.Alarm });
+            _signalBus?.Fire(new PlayAudioSignal { audioType = Audio.AudioType.Alarm });
         }
     }
 }

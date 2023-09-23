@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Tests.MobileTimer.Presenters
 {
-    public class ClockTimerPresenterTests
+    public class ClockPresenterTests
     {
         [Test]
         public void LoadData_View_DidLoadData_NotInvoked()
@@ -19,6 +19,7 @@ namespace Tests.MobileTimer.Presenters
             var view = Substitute.For<IClockView>();
             var sut = new ClockPresenter(mapper);
 
+            mapper.MapSingle().Returns(new ClockModel { currentDateTime = DateTime.Now });
             sut.Bind(view);
 
             // Act.
@@ -41,8 +42,6 @@ namespace Tests.MobileTimer.Presenters
 
             // Act.
             sut.LoadData();
-
-            var expectedModel = new ClockModel { currentDateTime = DateTime.Now };
 
             // Assert.
             mapper.Received(1).MapSingle();

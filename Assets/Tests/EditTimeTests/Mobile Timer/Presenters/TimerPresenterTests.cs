@@ -5,7 +5,6 @@ using MobileClock.Presenter;
 using MobileClock.View.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Tests.MobileTimer.Presenters
