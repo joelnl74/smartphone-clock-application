@@ -83,19 +83,21 @@ Run time test results
 ![RunTimeTests](https://github.com/joelnl74/smartphone-clock-application/assets/9337898/34a12de1-ffc6-4e08-91dd-8f74ce1a5e56)
 ## iOS/iPad devices. Do you have any concerns about UI?
 - Depending on the requirements landscape vs. portrait mode UI design and implementation need to be taken into account (for now decide on landscape because it fits most with PC and VR screens).
-- Mobile devices support a vast range of screen resolutions and sizes and can be difficult within Unity to get right, a system to make this more easier or automatically adjustable from code is favorable like a screen wrapper.
+- Mobile devices support a vast range of screen resolutions and sizes and can be difficult within Unity to get right, a system to make this easier or automatically adjustable from code is favorable like a screen wrapper.
 - Some mobile devices have safe areas that have to be taken into account when designing applications or UI.
 ## How would you refactor the code and/or project after release? What would you prioritize as “must happen” versus “nice to have” changes
 ### Must
-- Requirements for different devices it has to support (landscape/portrait/vs/mobile/pc)
+- Requirements and support for different devices it has to support (landscape/portrait/vs/mobile/pc)
 - Work on more options for interaction with the UI now it mostly consists of buttons but for some devices, it might be more intuitive to also have other options for interactions with the UI.
 - Global navigation structure (navigation controller) Currently all pages are present in the scene but it is more favorable to have one system that can create the pages on startup this would also allow for the creation of different views or settings based on the user's device. The view logic can then be determined based on Zenject injection while the assets can use a unity addressable bundle system for resource and memory management.
-- UX research into (VR/Mobile/Pc) clock applications to make a valid UI design for the end user like full screen vs widget, placement of UI elements and so on.
+- UX research into (VR/Mobile/Pc) clock applications to make a valid UI design for the end user like full screen vs. widget, placement of UI elements, and so on.
 - Dynamic safe area handling implementation for mobile devices
-### Would
+### Should
+- Extension on string for showing timer formats or some setting definition for different timer formats (now it is directly implemented in the views but could be an external setting or string extension method)
+- User settings create a model view presenter for user settings the settings model can be bound in a dependency container and injected in the places it is needed. Settings could contain time zones, stopwatch history, and multiple timezones to show.
 - Creating prefabs for mocking view logic for unit testing so we can also test view logic like button stats and so on.
 - Collection view (infinite scroll view) scroll view that makes use of a set amount of sub-views to the pool. The current object pool only reuses assets on reset in the stopwatch so in theory someone can still infinitely press the lap button and increase memory size.
-### Nice
+### Would
 - Styling system based on prefab variants and style bootstrapping (desire to quickly switch between styles) 
 - The audio system is really simple at the moment and could be made more extendable in the near future.
 - The scriptable object collections use linq queries to find specific audio clips or styles for buttons it would be better to map them to a dictionary from o(n) look up to o(1)
