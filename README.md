@@ -40,11 +40,8 @@ Documentation for the architecture used for this smartphone clock application.
 - MobileStopWatchViewController - StopWatchPresenter - StopWatchView - TimerModel/TimerLapModel
 - MobileTimerViewController - TimerPresenter - TimerView - TimerModel
 - Installers (Zenject dependencies binding) AudioMonoInstaller, MobileTimerMonoInstaller, MainMonoInstaller
+
 ### Base classes
 - Every presenter inherits from the class Presenter which contains a method to bind a generic view
 - Every view controller inherits from the view controller which makes sure contract interfaces are respected and can bind the view to the presenters (the view has no information about the presenter)
 - Every view inherits from base view 
-- Motion sickness has to be taken into account when developing VR devices
-- Ease of use implementation for interaction with the UI and the interaction devices presenter for the VR device.
-- Interaction methods for UI with VR input devices.
-- Setting up the UI so that it can be used for VR platforms (canvas settings world space, event system, VR input systems(gaze, remote controllers, raycasters)
