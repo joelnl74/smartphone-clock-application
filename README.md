@@ -35,7 +35,7 @@ Documentation for the architecture used for this smartphone clock application.
 - Mappers are responsible for mapping the initial data or combining data together from multiple data sources (If we would do back-end API calls this would Map to view models)
  
  ### Main pages/Entry points
-- MainUIViewcontroller - ClockPresenter - ClockView - ClockModel
+- MainUIViewcontroller - MainUIPresenter - UITabView
 - MobileClockViewController - ClockPresenter - ClockView - ClockModel
 - MobileStopWatchViewController - StopWatchPresenter - StopWatchView - TimerModel/TimerLapModel
 - MobileTimerViewController - TimerPresenter - TimerView - TimerModel
